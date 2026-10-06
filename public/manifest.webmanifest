@@ -1,0 +1,10 @@
+{
+  "name": "Look Up",
+  "short_name": "Look Up",
+  "description": "Name the clouds with an on-device open-weight model, then put the phone away.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b1d33",
+  "theme_color": "#0b1d33",
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}

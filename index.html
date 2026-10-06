@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Look Up</title>
+    <meta
+      name="description"
+      content="Point your phone at the sky. An open-weight model running on your device names the clouds and tells you what they mean. Then put the phone away."
+    />
+    <meta name="theme-color" content="#0b1d33" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+  </head>
+  <body>
+    <main id="app">
+      <header class="hero">
+        <h1>Look Up.</h1>
+        <p class="lede">
+          Point your phone at the sky. A small open-weight model, running <strong>on your phone</strong>,
+          names the clouds and tells you what they usually mean. Then you put the phone away and watch.
+        </p>
+      </header>
+
+      <section class="actions" id="actions">
+        <label class="btn primary" for="camera">
+          <input id="camera" type="file" accept="image/*" capture="environment" hidden />
+          Read the sky
+        </label>
+        <label class="btn ghost" for="gallery">
+          <input id="gallery" type="file" accept="image/*" hidden />
+          Use a photo I already took
+        </label>
+        <button class="btn ghost small" id="prepare" type="button">Get ready for no signal (downloads the model)</button>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+        <progress id="progress" max="100" value="0" hidden></progress>
+      </section>
+
+      <section id="result" class="card" hidden aria-live="polite"></section>
+
+      <section id="journal" class="journal" hidden>
+        <h2>Your sky log</h2>
+        <p class="totals" id="totals"></p>
+        <ol id="entries"></ol>
+      </section>
+
+      <footer class="foot">
+        <p>
+          Runs <a href="https://huggingface.co/openai/clip-vit-base-patch16" rel="noopener">CLIP ViT-B/16</a>
+          (open weights, MIT licence) with
+          <a href="https://github.com/huggingface/transformers.js" rel="noopener">Transformers.js</a>, in your browser.
+          Your photos never leave this device. No account, no tracking.
+          <span id="repo-link"></span>
+        </p>
+        <p class="fine">Cloud readings are hints, not a forecast. In a thunderstorm, go inside.</p>
+      </footer>
+    </main>
+
+    <div id="away" class="away" hidden>
+      <p class="away-title" id="away-title">Phone down. Eyes up.</p>
+      <p class="away-mission" id="away-mission"></p>
+      <p class="away-clock" id="away-clock">0 s</p>
+      <p class="away-hint">Lock your phone if you like. I'll count the time until you come back.</p>
+      <button class="btn ghost" id="back" type="button">I'm back</button>
+    </div>
+
+    <dialog id="debrief">
+      <form method="dialog" id="debrief-form">
+        <p class="debrief-title" id="debrief-title">What did the cloud do?</p>
+        <div class="choices">
+          <button type="button" value="grew">It grew</button>
+          <button type="button" value="faded">It faded</button>
+          <button type="button" value="moved">It moved on</button>
+          <button type="button" value="same">Nothing changed</button>
+        </div>
+        <button type="button" value="skipped" class="link">Skip</button>
+      </form>
+    </dialog>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

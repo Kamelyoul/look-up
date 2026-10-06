@@ -1,0 +1,283 @@
+:root {
+  --sky-top: #0b1d33;
+  --sky-mid: #1f4e79;
+  --sky-low: #9cc3e6;
+  --paper: #f6f8fb;
+  --ink: #0f1a26;
+  --muted: #5b6b7c;
+  --accent: #ffcf5c;
+  --danger: #b3261e;
+  --radius: 18px;
+  color-scheme: light;
+  font-family: ui-rounded, 'SF Pro Rounded', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--paper);
+  background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 55%, var(--sky-low) 130%) fixed;
+}
+
+main {
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: max(2.5rem, env(safe-area-inset-top)) 16px 3rem;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 14vw, 4.5rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin: 1rem 0 0.75rem;
+}
+
+.lede {
+  font-size: 1.1rem;
+  color: #d9e6f3;
+  margin: 0 0 2rem;
+}
+
+.actions {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 999px;
+  padding: 1rem 1.25rem;
+  font: inherit;
+  font-weight: 650;
+  font-size: 1.05rem;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.08s ease;
+}
+.btn:active {
+  transform: scale(0.98);
+}
+.btn.primary {
+  background: var(--accent);
+  color: var(--ink);
+  font-size: 1.25rem;
+  padding: 1.15rem;
+}
+.btn.ghost {
+  background: rgb(255 255 255 / 0.12);
+  color: var(--paper);
+}
+.btn.small {
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.7rem;
+}
+.btn:focus-visible,
+label.btn:focus-within {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.status {
+  min-height: 1.5em;
+  margin: 0.25rem 0 0;
+  font-size: 0.9rem;
+  color: #d9e6f3;
+}
+
+progress {
+  width: 100%;
+  height: 6px;
+  accent-color: var(--accent);
+}
+
+.card {
+  margin-top: 1.5rem;
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: var(--radius);
+  padding: 1rem 1rem 1.25rem;
+  box-shadow: 0 20px 50px rgb(0 0 0 / 0.25);
+}
+.card.danger {
+  border: 3px solid var(--danger);
+}
+.card .photo {
+  width: 100%;
+  max-height: 14rem;
+  object-fit: cover;
+  border-radius: calc(var(--radius) - 6px);
+  display: block;
+}
+.card h2 {
+  font-size: 2rem;
+  margin: 0.75rem 0 0;
+  letter-spacing: -0.02em;
+}
+.card .or {
+  font-size: 1.1rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+.card .conf {
+  margin: 0.15rem 0 0.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.card dl {
+  margin: 0.75rem 0 1rem;
+}
+.card dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-top: 0.75rem;
+}
+.card dd {
+  margin: 0.15rem 0 0;
+}
+.card .why {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.thinking {
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.journal {
+  margin-top: 2rem;
+}
+.journal h2 {
+  margin-bottom: 0.25rem;
+}
+.totals {
+  margin-top: 0;
+  color: #d9e6f3;
+}
+.journal ol {
+  padding-left: 1.2rem;
+  font-size: 0.95rem;
+}
+.journal li span {
+  color: #b8cde2;
+}
+
+.foot {
+  margin-top: 3rem;
+  font-size: 0.85rem;
+  color: #c7d8ea;
+}
+.foot a {
+  color: inherit;
+}
+.foot .fine {
+  opacity: 0.8;
+}
+
+/* "Phone away" screen: black, minimal, battery-friendly. */
+.away {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  color: #8a96a3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 16px;
+  gap: 0.75rem;
+  z-index: 10;
+}
+.away[hidden] {
+  display: none;
+}
+.away-title {
+  font-size: 1.6rem;
+  color: #dfe7ef;
+  margin: 0;
+}
+.away-mission {
+  max-width: 28rem;
+  margin: 0;
+}
+.away-clock {
+  font-size: 3rem;
+  font-variant-numeric: tabular-nums;
+  color: #dfe7ef;
+  margin: 1rem 0;
+}
+.away-hint {
+  font-size: 0.85rem;
+  max-width: 22rem;
+}
+.away .btn {
+  max-width: 16rem;
+}
+body.is-away {
+  overflow: hidden;
+}
+
+dialog {
+  border: 0;
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  width: min(26rem, calc(100vw - 32px));
+  color: var(--ink);
+}
+dialog::backdrop {
+  background: rgb(0 0 0 / 0.6);
+}
+.debrief-title {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-top: 0;
+}
+.choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.choices button {
+  font: inherit;
+  padding: 0.8rem;
+  border-radius: 12px;
+  border: 1px solid #c9d3de;
+  background: #fff;
+  cursor: pointer;
+}
+button.link {
+  margin-top: 0.75rem;
+  background: none;
+  border: 0;
+  color: var(--muted);
+  text-decoration: underline;
+  font: inherit;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.card .storm {
+  margin: 0.5rem 0 0;
+  padding: 0.6rem 0.75rem;
+  border-left: 4px solid var(--danger);
+  background: #fdecea;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
